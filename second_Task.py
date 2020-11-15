@@ -31,19 +31,20 @@ import requests
 from urllib import parse
 
 #pattern = r'<a.+href=[\'"]([^./][^\'"]*)[\'"]'
-a = input()
+url = input()
 #
 #List = re.findall(pattern, str(res.text))
 #print(List)
 #page = BeautifulSoup(str(res.content),'html.parser')
 #print(page.prettify())
 
-def webLinks(a):
+def webLinks(url):
     urls = set()
-    domain_name = parse(a).netloc # по логике здесь я должен был вытаскивать имена доменов....но я не понимаю почему netloc не работает
+    url_parsed = parse(url)
+    link = url_parsed.netloc
     #res = requests.get(a)
     #page = BeautifulSoup(str(res.content), 'html.parser')4
-    soup = BeautifulSoup(requests.get(a).content, 'html.parser')
-    print(domain_name)
+    soup = BeautifulSoup(requests.get(url).content, 'html.parser')
+    print(link)
 
-webLinks(a)
+webLinks(url)
