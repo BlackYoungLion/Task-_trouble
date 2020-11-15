@@ -31,7 +31,7 @@ import requests
 from urllib import parse
 
 #pattern = r'<a.+href=[\'"]([^./][^\'"]*)[\'"]'
-a = input().strip()
+a = input()
 #
 #List = re.findall(pattern, str(res.text))
 #print(List)
