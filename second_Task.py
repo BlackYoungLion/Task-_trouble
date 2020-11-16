@@ -25,26 +25,29 @@ ya.ru
 
 
 
-from bs4 import BeautifulSoup
-import  re
 import requests
-from urllib import parse
+from urllib.parse import urlparse, urljoin
+from bs4 import BeautifulSoup
 
-#pattern = r'<a.+href=[\'"]([^./][^\'"]*)[\'"]'
 url = input()
-#
-#List = re.findall(pattern, str(res.text))
-#print(List)
-#page = BeautifulSoup(str(res.content),'html.parser')
-#print(page.prettify())
-
 def webLinks(url):
     urls = set()
-    url_parsed = parse(url)
+    url_parsed = urlparse(url)
     link = url_parsed.netloc
-    #res = requests.get(a)
-    #page = BeautifulSoup(str(res.content), 'html.parser')4
     soup = BeautifulSoup(requests.get(url).content, 'html.parser')
-    print(link)
+    #print(soup)
+    print(soup)
+    for a_tag in soup.findAll('a'):
+        href = a_tag.attrs.get('href') # Как я понял получает доступ напрямую к атрибуту href
+        if href == '' or href is None:
+            continue
+    #href = urljoin(url, href)
+    print (href)
 
-webLinks(url)
+    parsed_href = urlparse(href)
+    href = parsed_href.netloc
+    print(href)
+    if href not in urls:
+        urls.add(href)
+
+    return print(urls)
