@@ -36,18 +36,20 @@ def webLinks(url):
     link = url_parsed.netloc
     soup = BeautifulSoup(requests.get(url).content, 'html.parser')
     #print(soup)
-    print(soup)
+    #print(soup)
     for a_tag in soup.findAll('a'):
         href = a_tag.attrs.get('href') # Как я понял получает доступ напрямую к атрибуту href
         if href == '' or href is None:
             continue
     #href = urljoin(url, href)
-    print (href)
+    #print (href)
 
-    parsed_href = urlparse(href)
-    href = parsed_href.netloc
-    print(href)
-    if href not in urls:
-        urls.add(href)
+        parsed_href = urlparse(href)
+        href = parsed_href.netloc
+    #print(href)
+        if href not in urls:
+            urls.add(href)
 
     return print(urls)
+
+webLinks(url)
