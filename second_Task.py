@@ -41,15 +41,21 @@ def webLinks(url):
         href = a_tag.attrs.get('href') # Как я понял получает доступ напрямую к атрибуту href
         if href == '' or href is None:
             continue
-    #href = urljoin(url, href)
+        #href = urljoin(url, href)
     #print (href)
 
         parsed_href = urlparse(href)
         href = parsed_href.netloc
+
+
     #print(href)
         if href not in urls:
             urls.add(href)
-
-    return print(urls)
+    urls = list(urls)
+    urls = sorted(urls)
+    for i in urls:
+        if ':' in i:
+            i = i[:i.index(':')]
+        print(i)
 
 webLinks(url)
