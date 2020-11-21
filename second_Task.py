@@ -22,7 +22,7 @@ stepic.org
 www.ya.ru
 ya.ru
 """
-
+#url для проверки http://pastebin.com/raw/2mie4QYa
 
 
 import requests
